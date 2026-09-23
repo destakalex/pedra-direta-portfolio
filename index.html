@@ -25,8 +25,45 @@
   .nav-right{display:flex;align-items:center;gap:16px;}
   .nav-cta{background:var(--accent);color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;white-space:nowrap;}
   .nav-cta:hover{background:var(--accent-dark);}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px;}
+  .nav-toggle span{display:block;width:24px;height:2px;background:var(--stone-dark,#2a2620);border-radius:2px;}
   #langSwitcher{border:1px solid #d8d2c0;border-radius:6px;padding:7px 10px;font-size:13px;background:#fdfcfa;color:var(--stone-dark);font-family:inherit;cursor:pointer;}
-  @media (max-width:760px){.nav-links{display:none;}}
+  @media (max-width:760px){
+    .nav-toggle{display:flex;}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 24px 16px;border-bottom:1px solid #e2ddd0;box-shadow:0 8px 18px rgba(38,36,31,.08);}
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:12px 0;border-bottom:1px solid #eae6da;font-size:16px;}
+    .nav-links a:last-child{border-bottom:none;}
+    header{position:sticky;}
+    .nav{position:relative;}
+    .nav-right .nav-cta{padding:9px 14px;font-size:13px;}
+  }
+  @media (max-width:420px){
+    .nav-right{gap:8px;}
+    #langSwitcher{font-size:12px;padding:6px 6px;max-width:92px;}
+  }
+
+  /* BANNER DE ENTRADA (reclame a passar) */
+  .announce-bar{position:relative;background:var(--accent);color:#fff;overflow:hidden;white-space:nowrap;padding:9px 0;font-size:13.5px;font-weight:600;}
+  .announce-bar .announce-track{display:inline-block;padding-left:100%;animation:announce-scroll 22s linear infinite;}
+  .announce-bar:hover .announce-track{animation-play-state:paused;}
+  @keyframes announce-scroll{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+  .announce-close{position:absolute;top:0;right:10px;height:100%;display:flex;align-items:center;color:#fff;opacity:.85;cursor:pointer;font-size:16px;background:none;border:none;padding:0 6px;}
+  .announce-close:hover{opacity:1;}
+  .announce-bar.hidden{display:none;}
+
+  /* SELO DE GARANTIA na secção de encomenda */
+  .guarantee-badge{max-width:640px;margin:14px auto 0;background:#f2efe7;border:1px solid #e2ddd0;border-radius:10px;padding:12px 18px;text-align:center;font-size:14px;font-weight:700;color:var(--accent-dark);}
+
+  /* POPUP DE REFORÇO (aparece 2 min depois de entrar) */
+  .quote-popup{position:fixed;right:20px;bottom:20px;max-width:340px;background:var(--white);border:1px solid #e2ddd0;border-radius:var(--radius);box-shadow:0 12px 32px rgba(38,36,31,.22);padding:20px;z-index:150;transform:translateY(20px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;}
+  .quote-popup.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .quote-popup h4{font-size:15.5px;margin-bottom:8px;padding-right:20px;}
+  .quote-popup p{font-size:13px;color:var(--stone-mid);margin-bottom:14px;}
+  .quote-popup .btn{padding:10px 16px;font-size:13.5px;}
+  .quote-popup-close{position:absolute;top:10px;right:12px;font-size:18px;line-height:1;background:none;border:none;cursor:pointer;color:var(--stone-mid);}
+  @media (max-width:480px){.quote-popup{left:16px;right:16px;max-width:none;bottom:16px;}}
+
   .hero{padding:64px 0 48px;background:linear-gradient(180deg,#f2efe7 0%,var(--bg) 100%);text-align:center;}
   .hero h1{font-size:clamp(26px,4vw,40px);font-weight:800;max-width:760px;margin:0 auto 14px;}
   .hero p.lead{font-size:17px;color:var(--stone-mid);max-width:620px;margin:0 auto;}
@@ -105,9 +142,17 @@
         <option value="da">Dansk</option>
       </select>
       <a class="nav-cta" href="#encomenda" data-i18n="nav_cta">Fazer Pedido</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
+
+<div class="announce-bar" id="announceBar">
+  <span class="announce-track" data-i18n="banner_reclame">🪨 Garantimos cobrir qualquer orçamento já feito — com sigilo total dos seus dados. Peça já o seu!</span>
+  <button class="announce-close" id="announceClose" aria-label="Fechar">&times;</button>
+</div>
 
 <section class="hero">
   <div class="container">
@@ -198,9 +243,19 @@
         <div class="cap" data-i18n="cap_banheiro">Casa de Banho — Bancada</div>
       </div>
 
-      <div class="app-card" onclick="abrirLightbox('images/obra-02.jpg')" style="background:linear-gradient(135deg,#c9c2ad,#8f887a);">
-        <img src="images/obra-02.jpg" alt="Aplicação futura" loading="lazy" onerror="this.style.display='none'">
-        <div class="cap" data-i18n="cap_obra_futura">A sua próxima obra aqui</div>
+      <div class="app-card" onclick="abrirLightbox('images/pilares-graniticos.jpg')">
+        <img src="images/pilares-graniticos.jpg" alt="Pilares em granito" loading="lazy">
+        <div class="cap" data-i18n="cap_pilares">Pilares — Revestimento em Granito</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/patio-pavimento-pedra.jpg')">
+        <img src="images/patio-pavimento-pedra.jpg" alt="Pátio com pavimento em pedra natural" loading="lazy">
+        <div class="cap" data-i18n="cap_patio">Pátio — Pavimento em Pedra Natural</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/patio-coberto-pilares.jpg')">
+        <img src="images/patio-coberto-pilares.jpg" alt="Pátio coberto com pilares em pedra" loading="lazy">
+        <div class="cap" data-i18n="cap_patio_coberto">Pátio Coberto — Pilares e Piso</div>
       </div>
 
     </div>
@@ -212,10 +267,18 @@
   <img id="lightboxImg" src="" alt="">
 </div>
 
+<div class="quote-popup" id="quotePopup">
+  <button class="quote-popup-close" id="quotePopupClose" aria-label="Fechar">&times;</button>
+  <h4 data-i18n="popup_titulo">Já tem um orçamento de outra empresa?</h4>
+  <p data-i18n="popup_texto">Envie-nos o orçamento que já tem e garantimos cobri-lo — com total confidencialidade dos seus dados.</p>
+  <button type="button" class="btn btn-email" id="quotePopupBtn" data-i18n="popup_btn">Enviar o meu orçamento</button>
+</div>
+
 <section id="encomenda" class="alt">
   <div class="container">
     <h2 class="section-title" data-i18n="encomenda_title">Pedir Orçamento</h2>
     <p class="section-sub" data-i18n="encomenda_sub">Preencha os dados do projeto e escolha como quer enviar: email, WhatsApp (mensagem escrita) ou descarregar em PDF para anexar onde precisar.</p>
+    <div class="guarantee-badge" data-i18n="encomenda_garantia">Garantimos cobrir qualquer orçamento já feito, com sigilo total e não divulgação dos seus dados.</div>
 
     <div class="form-wrap">
       <form id="orderForm">
@@ -336,6 +399,44 @@ function fecharLightbox(){
   document.getElementById('lightbox').classList.remove('open');
 }
 
+// ---------- Menu mobile (hamburger) ----------
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const links = document.querySelector('.nav-links');
+  if(!toggle || !links) return;
+  toggle.addEventListener('click', function(){
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// ---------- Banner de entrada (reclame) ----------
+document.getElementById('announceClose').addEventListener('click', function(){
+  document.getElementById('announceBar').classList.add('hidden');
+});
+
+// ---------- Popup de reforço (aparece 2 minutos depois de entrar no site) ----------
+setTimeout(function(){
+  const popup = document.getElementById('quotePopup');
+  if(popup) popup.classList.add('show');
+}, 120000); // 2 minutos
+
+document.getElementById('quotePopupClose').addEventListener('click', function(){
+  document.getElementById('quotePopup').classList.remove('show');
+});
+document.getElementById('quotePopupBtn').addEventListener('click', function(){
+  document.getElementById('quotePopup').classList.remove('show');
+  document.getElementById('encomenda').scrollIntoView({behavior:'smooth'});
+  const campoNome = document.getElementById('f_nome');
+  if(campoNome) setTimeout(()=>campoNome.focus(), 500);
+});
+
 // ============================================================
 // CONFIGURAÇÃO — substitua pelos seus próprios IDs/chaves
 // ============================================================
@@ -361,7 +462,11 @@ const translations = {
     cap_cozinha_branco:"Cozinha — Bancada em Mármore", cap_cozinha_ilha:"Cozinha — Ilha Central",
     cap_hall_escada:"Hall de Entrada — Escadaria", cap_cozinha_exotica:"Cozinha — Pedra Exótica",
     cap_fachada:"Fachada — Revestimento Exterior", cap_banheiro:"Casa de Banho — Bancada",
+    cap_pilares:"Pilares — Revestimento em Granito", cap_patio:"Pátio — Pavimento em Pedra Natural", cap_patio_coberto:"Pátio Coberto — Pilares e Piso",
     encomenda_title:"Pedir Orçamento", encomenda_sub:"Preencha os dados do projeto e escolha como quer enviar: email, WhatsApp (mensagem escrita) ou descarregar em PDF para anexar onde precisar.",
+    encomenda_garantia:"Garantimos cobrir qualquer orçamento já feito, com sigilo total e não divulgação dos seus dados.",
+    banner_reclame:"🪨 Garantimos cobrir qualquer orçamento já feito — com sigilo total dos seus dados. Peça já o seu!",
+    popup_titulo:"Já tem um orçamento de outra empresa?", popup_texto:"Envie-nos o orçamento que já tem e garantimos cobri-lo — com total confidencialidade dos seus dados.", popup_btn:"Enviar o meu orçamento",
     label_nome:"Nome *", label_empresa:"Empresa / Obra", label_email:"Email *", label_telefone:"WhatsApp / Telefone *",
     placeholder_telefone:"+351 9XX XXX XXX", label_tipo:"Tipo de cliente",
     opt_tipo1:"Arquiteto / Designer", opt_tipo2:"Construtor / Empreiteiro", opt_tipo3:"Marmorista / Fabricante",
@@ -397,7 +502,11 @@ const translations = {
     cap_cozinha_branco:"Kitchen — Marble Countertop", cap_cozinha_ilha:"Kitchen — Central Island",
     cap_hall_escada:"Entrance Hall — Staircase", cap_cozinha_exotica:"Kitchen — Exotic Stone",
     cap_fachada:"Façade — Exterior Cladding", cap_banheiro:"Bathroom — Countertop",
+    cap_pilares:"Pillars — Granite Cladding", cap_patio:"Patio — Natural Stone Paving", cap_patio_coberto:"Covered Patio — Pillars and Flooring",
     encomenda_title:"Request a Quote", encomenda_sub:"Fill in your project details and choose how to send it: email, WhatsApp (text only) or download as PDF to attach wherever needed.",
+    encomenda_garantia:"We guarantee to beat any quote you've already received, with full confidentiality and non-disclosure of your data.",
+    banner_reclame:"🪨 We guarantee to beat any quote you've already received — with full confidentiality. Request yours now!",
+    popup_titulo:"Already have a quote from another company?", popup_texto:"Send us the quote you already have and we guarantee to beat it — with full confidentiality of your data.", popup_btn:"Send my quote",
     label_nome:"Name *", label_empresa:"Company / Project", label_email:"Email *", label_telefone:"WhatsApp / Phone *",
     placeholder_telefone:"+1 XXX XXX XXXX", label_tipo:"Client type",
     opt_tipo1:"Architect / Designer", opt_tipo2:"Builder / Contractor", opt_tipo3:"Stone Fabricator",
@@ -433,7 +542,11 @@ const translations = {
     cap_cozinha_branco:"Cocina — Encimera de Mármol", cap_cozinha_ilha:"Cocina — Isla Central",
     cap_hall_escada:"Recibidor — Escalera", cap_cozinha_exotica:"Cocina — Piedra Exótica",
     cap_fachada:"Fachada — Revestimiento Exterior", cap_banheiro:"Baño — Encimera",
+    cap_pilares:"Pilares — Revestimiento en Granito", cap_patio:"Patio — Pavimento en Piedra Natural", cap_patio_coberto:"Patio Cubierto — Pilares y Piso",
     encomenda_title:"Solicitar Presupuesto", encomenda_sub:"Complete los datos del proyecto y elija cómo enviarlo: email, WhatsApp (solo texto) o descargar en PDF para adjuntar donde lo necesite.",
+    encomenda_garantia:"Garantizamos cubrir cualquier presupuesto que ya haya recibido, con total confidencialidad y no divulgación de sus datos.",
+    banner_reclame:"🪨 Garantizamos cubrir cualquier presupuesto que ya tenga — con total confidencialidad de sus datos. ¡Pídalo ya!",
+    popup_titulo:"¿Ya tiene un presupuesto de otra empresa?", popup_texto:"Envíenos el presupuesto que ya tiene y garantizamos cubrirlo — con total confidencialidad de sus datos.", popup_btn:"Enviar mi presupuesto",
     label_nome:"Nombre *", label_empresa:"Empresa / Obra", label_email:"Email *", label_telefone:"WhatsApp / Teléfono *",
     placeholder_telefone:"+34 6XX XXX XXX", label_tipo:"Tipo de cliente",
     opt_tipo1:"Arquitecto / Diseñador", opt_tipo2:"Constructor / Contratista", opt_tipo3:"Marmolista / Fabricante",
@@ -469,7 +582,11 @@ const translations = {
     cap_cozinha_branco:"厨房 — 大理石台面", cap_cozinha_ilha:"厨房 — 中央岛台",
     cap_hall_escada:"入口大厅 — 楼梯", cap_cozinha_exotica:"厨房 — 珍稀石材",
     cap_fachada:"外墙 — 外部饰面", cap_banheiro:"浴室 — 台面",
+    cap_pilares:"立柱 — 花岗岩饰面", cap_patio:"庭院 — 天然石材铺装", cap_patio_coberto:"有顶庭院 — 立柱与地面",
     encomenda_title:"索取报价", encomenda_sub:"填写项目信息并选择发送方式：电子邮件、WhatsApp（仅文字信息）或下载 PDF 以便随时附加使用。",
+    encomenda_garantia:"我们保证覆盖您已获得的任何报价，并对您的数据严格保密，绝不外泄。",
+    banner_reclame:"🪨 我们保证覆盖您已有的任何报价——并对您的数据严格保密。立即索取！",
+    popup_titulo:"您已经有其他公司的报价了吗？", popup_texto:"请将您已有的报价发给我们，我们保证覆盖它——并对您的数据严格保密。", popup_btn:"发送我的报价",
     label_nome:"姓名 *", label_empresa:"公司 / 项目", label_email:"电子邮件 *", label_telefone:"WhatsApp / 电话 *",
     placeholder_telefone:"+86 1XX XXXX XXXX", label_tipo:"客户类型",
     opt_tipo1:"建筑师 / 设计师", opt_tipo2:"建筑商 / 承包商", opt_tipo3:"石材加工商",
@@ -505,7 +622,11 @@ const translations = {
     cap_cozinha_branco:"Küche — Marmorarbeitsplatte", cap_cozinha_ilha:"Küche — Kochinsel",
     cap_hall_escada:"Eingangshalle — Treppe", cap_cozinha_exotica:"Küche — Exotischer Stein",
     cap_fachada:"Fassade — Außenverkleidung", cap_banheiro:"Badezimmer — Arbeitsplatte",
+    cap_pilares:"Säulen — Granitverkleidung", cap_patio:"Terrasse — Naturstein-Pflaster", cap_patio_coberto:"Überdachte Terrasse — Säulen und Boden",
     encomenda_title:"Angebot Anfordern", encomenda_sub:"Füllen Sie die Projektdaten aus und wählen Sie, wie Sie senden möchten: E-Mail, WhatsApp (nur Text) oder als PDF herunterladen, um es bei Bedarf anzuhängen.",
+    encomenda_garantia:"Wir garantieren, jedes bereits erhaltene Angebot zu unterbieten – bei vollständiger Vertraulichkeit und Nichtweitergabe Ihrer Daten.",
+    banner_reclame:"🪨 Wir garantieren, jedes bereits erhaltene Angebot zu unterbieten — bei voller Vertraulichkeit. Jetzt anfragen!",
+    popup_titulo:"Haben Sie bereits ein Angebot von einem anderen Unternehmen?", popup_texto:"Senden Sie uns Ihr bestehendes Angebot und wir garantieren, es zu unterbieten — bei voller Vertraulichkeit Ihrer Daten.", popup_btn:"Mein Angebot senden",
     label_nome:"Name *", label_empresa:"Firma / Projekt", label_email:"E-Mail *", label_telefone:"WhatsApp / Telefon *",
     placeholder_telefone:"+49 1XX XXXXXXX", label_tipo:"Kundentyp",
     opt_tipo1:"Architekt / Designer", opt_tipo2:"Bauunternehmer", opt_tipo3:"Natursteinverarbeiter",
@@ -541,7 +662,11 @@ const translations = {
     cap_cozinha_branco:"Кухня — Мраморная Столешница", cap_cozinha_ilha:"Кухня — Центральный Остров",
     cap_hall_escada:"Прихожая — Лестница", cap_cozinha_exotica:"Кухня — Экзотический Камень",
     cap_fachada:"Фасад — Внешняя Облицовка", cap_banheiro:"Ванная — Столешница",
+    cap_pilares:"Колонны — Облицовка Гранитом", cap_patio:"Патио — Мощение Натуральным Камнем", cap_patio_coberto:"Крытое Патио — Колонны и Пол",
     encomenda_title:"Запросить Смету", encomenda_sub:"Заполните данные проекта и выберите способ отправки: email, WhatsApp (только текст) или скачайте в PDF для прикрепления там, где нужно.",
+    encomenda_garantia:"Мы гарантируем перекрыть любую уже полученную смету, при полной конфиденциальности и неразглашении ваших данных.",
+    banner_reclame:"🪨 Мы гарантируем перекрыть любую уже полученную смету — при полной конфиденциальности. Запросите прямо сейчас!",
+    popup_titulo:"У вас уже есть смета от другой компании?", popup_texto:"Пришлите нам вашу текущую смету, и мы гарантируем перекрыть её — при полной конфиденциальности ваших данных.", popup_btn:"Отправить мою смету",
     label_nome:"Имя *", label_empresa:"Компания / Объект", label_email:"Email *", label_telefone:"WhatsApp / Телефон *",
     placeholder_telefone:"+7 9XX XXX XX XX", label_tipo:"Тип клиента",
     opt_tipo1:"Архитектор / Дизайнер", opt_tipo2:"Строитель / Подрядчик", opt_tipo3:"Обработчик Камня",
@@ -577,7 +702,11 @@ const translations = {
     cap_cozinha_branco:"Keuken — Marmeren Werkblad", cap_cozinha_ilha:"Keuken — Kookeiland",
     cap_hall_escada:"Entreehal — Trap", cap_cozinha_exotica:"Keuken — Exotische Steen",
     cap_fachada:"Gevel — Buitenbekleding", cap_banheiro:"Badkamer — Werkblad",
+    cap_pilares:"Pilaren — Granietbekleding", cap_patio:"Patio — Natuursteen Bestrating", cap_patio_coberto:"Overdekte Patio — Pilaren en Vloer",
     encomenda_title:"Offerte Aanvragen", encomenda_sub:"Vul de projectgegevens in en kies hoe u wilt verzenden: e-mail, WhatsApp (alleen tekst) of download als PDF om overal bij te voegen waar nodig.",
+    encomenda_garantia:"Wij garanderen dat we elke reeds ontvangen offerte overtreffen, met volledige vertrouwelijkheid en geheimhouding van uw gegevens.",
+    banner_reclame:"🪨 Wij garanderen elke reeds ontvangen offerte te overtreffen — met volledige vertrouwelijkheid. Vraag nu de uwe aan!",
+    popup_titulo:"Heeft u al een offerte van een ander bedrijf?", popup_texto:"Stuur ons uw huidige offerte en wij garanderen deze te overtreffen — met volledige vertrouwelijkheid van uw gegevens.", popup_btn:"Mijn offerte versturen",
     label_nome:"Naam *", label_empresa:"Bedrijf / Project", label_email:"E-mail *", label_telefone:"WhatsApp / Telefoon *",
     placeholder_telefone:"+31 6 XXXXXXXX", label_tipo:"Klanttype",
     opt_tipo1:"Architect / Ontwerper", opt_tipo2:"Bouwer / Aannemer", opt_tipo3:"Natuursteenbewerker",
@@ -613,7 +742,11 @@ const translations = {
     cap_cozinha_branco:"Køkken — Marmorbordplade", cap_cozinha_ilha:"Køkken — Køkkenø",
     cap_hall_escada:"Entré — Trappe", cap_cozinha_exotica:"Køkken — Eksotisk Sten",
     cap_fachada:"Facade — Udvendig Beklædning", cap_banheiro:"Badeværelse — Bordplade",
+    cap_pilares:"Søjler — Granitbeklædning", cap_patio:"Terrasse — Naturstensbelægning", cap_patio_coberto:"Overdækket Terrasse — Søjler og Gulv",
     encomenda_title:"Anmod om Tilbud", encomenda_sub:"Udfyld projektoplysningerne, og vælg hvordan du vil sende det: e-mail, WhatsApp (kun tekst) eller download som PDF til at vedhæfte, hvor du har brug for det.",
+    encomenda_garantia:"Vi garanterer at matche eller forbedre ethvert tilbud, du allerede har modtaget, med fuld fortrolighed og ingen videregivelse af dine data.",
+    banner_reclame:"🪨 Vi garanterer at forbedre ethvert tilbud, du allerede har modtaget — med fuld fortrolighed. Anmod om dit nu!",
+    popup_titulo:"Har du allerede et tilbud fra et andet firma?", popup_texto:"Send os dit nuværende tilbud, og vi garanterer at forbedre det — med fuld fortrolighed om dine data.", popup_btn:"Send mit tilbud",
     label_nome:"Navn *", label_empresa:"Virksomhed / Projekt", label_email:"E-mail *", label_telefone:"WhatsApp / Telefon *",
     placeholder_telefone:"+45 XX XX XX XX", label_tipo:"Kundetype",
     opt_tipo1:"Arkitekt / Designer", opt_tipo2:"Bygherre / Entreprenør", opt_tipo3:"Stenforarbejder",
@@ -810,7 +943,11 @@ async function enviarPorEmailWeb3Forms(){
 
     const ficheiros = document.getElementById('f_anexo').files;
     if(ficheiros && ficheiros.length > 0){
-      payload.attachment = await ficheiroParaBase64(ficheiros[0]); // PDF, Excel ou imagem
+      payload.attachment = await ficheiroParaBase64(ficheiros[0]); // PDF, Excel ou imagem escolhidos manualmente
+    } else {
+      // Sem ficheiro manual: anexa automaticamente o PDF-resumo do pedido, para o email chegar sempre com um PDF
+      const docPdf = gerarDocPDF(d);
+      payload.attachment = docPdf.output('datauristring');
     }
 
     const resp = await fetch('https://api.web3forms.com/submit', {
@@ -837,11 +974,8 @@ function enviarPorWhatsapp(){
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`, '_blank');
 }
 
-// ---------- 3) DESCARREGAR EM PDF ----------
-function descarregarPDF(){
-  const d = getFormData();
-  if(!validar(d)) return;
-
+// ---------- 3) GERAR PDF (usado tanto no download manual como no anexo automático do email) ----------
+function gerarDocPDF(d){
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
@@ -882,6 +1016,14 @@ function descarregarPDF(){
   const detalhes = doc.splitTextToSize(d.msg || '-', 180);
   doc.text(detalhes, 15, y);
 
+  return doc;
+}
+
+function descarregarPDF(){
+  const d = getFormData();
+  if(!validar(d)) return;
+
+  const doc = gerarDocPDF(d);
   const nomeArquivo = `pedido-orcamento-${d.nome.replace(/\s+/g,'-').toLowerCase() || 'cliente'}.pdf`;
   doc.save(nomeArquivo);
   mostrarStatus(t('msg_pdf_ok'), true);
