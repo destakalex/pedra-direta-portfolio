@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedra Direta | Portfólio & Encomendas</title>
+<meta name="description" content="Portfólio de trabalhos e pedidos de orçamento de rochas ornamentais — Alex Silva, consultoria de granitos e mármores.">
+<style>
+  :root{
+    --stone-dark:#26241f; --stone-mid:#6b6558; --stone-light:#eeece4;
+    --accent:#786a52; --accent-dark:#5c503c; --bg:#f8f7f3; --white:#fff; --radius:14px;
+    --whatsapp:#3f6b52; --whatsapp-dark:#345a44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--stone-dark);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+  header{position:sticky;top:0;z-index:50;background:rgba(250,249,246,0.96);backdrop-filter:blur(6px);border-bottom:1px solid #e2ddd0;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .logo{font-size:20px;font-weight:700;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:28px;font-size:15px;font-weight:500;}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-cta{background:var(--accent);color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;white-space:nowrap;}
+  .nav-cta:hover{background:var(--accent-dark);}
+  @media (max-width:760px){.nav-links{display:none;}}
+  .hero{padding:64px 0 48px;background:linear-gradient(180deg,#f2efe7 0%,var(--bg) 100%);text-align:center;}
+  .hero h1{font-size:clamp(26px,4vw,40px);font-weight:800;max-width:760px;margin:0 auto 14px;}
+  .hero p.lead{font-size:17px;color:var(--stone-mid);max-width:620px;margin:0 auto;}
+  section{padding:64px 0;}
+  section.alt{background:var(--white);border-top:1px solid #eee6d8;border-bottom:1px solid #eee6d8;}
+  h2.section-title{font-size:clamp(22px,3vw,30px);font-weight:800;text-align:center;margin-bottom:10px;}
+  p.section-sub{text-align:center;color:var(--stone-mid);max-width:640px;margin:0 auto 40px;font-size:15.5px;}
+
+  /* PORTFOLIO GRID */
+  .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+  .portfolio-card{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#d9d4c6,#a9a290);box-shadow:0 2px 14px rgba(38,36,31,.07);transition:box-shadow .25s ease, transform .25s ease;}
+  .portfolio-card:hover{box-shadow:0 10px 28px rgba(38,36,31,.14);transform:translateY(-2px);}
+  .portfolio-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .portfolio-card .cap{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;background:linear-gradient(0deg,rgba(20,18,15,.62),transparent);color:#fff;font-size:13px;font-weight:600;letter-spacing:.2px;}
+  .portfolio-card .fallback{position:relative;z-index:2;color:#fff;font-size:12px;font-weight:700;padding:10px;text-shadow:0 1px 3px rgba(0,0,0,.6);}
+
+  /* APLICAÇÕES — galeria individual com lightbox */
+  .app-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+  .app-card{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;cursor:zoom-in;background:#e5e2d8;box-shadow:0 2px 14px rgba(38,36,31,.07);transition:box-shadow .25s ease;}
+  .app-card:hover{box-shadow:0 10px 28px rgba(38,36,31,.14);}
+  .app-card img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;}
+  .app-card:hover img{transform:scale(1.05);}
+  .app-card .cap{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;background:linear-gradient(0deg,rgba(20,18,15,.62),transparent);color:#fff;font-size:13px;font-weight:600;letter-spacing:.2px;}
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(20,18,15,.92);z-index:200;align-items:center;justify-content:center;padding:24px;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:100%;max-height:90vh;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.5);}
+  .lightbox-close{position:absolute;top:20px;right:28px;color:#fff;font-size:32px;cursor:pointer;line-height:1;}
+
+  /* FORM */
+  .form-wrap{max-width:720px;margin:0 auto;background:var(--white);border:1px solid #e2ddd0;border-radius:var(--radius);padding:36px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  @media (max-width:600px){.form-row{grid-template-columns:1fr;}}
+  label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px;color:var(--stone-mid);}
+  input, select, textarea{
+    width:100%;padding:11px 12px;border:1px solid #d8d2c0;border-radius:7px;font-size:14.5px;
+    font-family:inherit;background:#fdfcfa;
+  }
+  textarea{resize:vertical;min-height:90px;}
+  .full{grid-column:1 / -1;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:8px;font-weight:700;font-size:14.5px;border:none;cursor:pointer;width:100%;}
+  .btn-email{background:var(--accent);color:#fff;}
+  .btn-email:hover{background:var(--accent-dark);}
+  .btn-whatsapp{background:var(--whatsapp);color:#fff;}
+  .btn-whatsapp:hover{background:var(--whatsapp-dark);}
+  .btn-pdf{background:var(--stone-dark);color:#fff;}
+  .btn-pdf:hover{background:#000;}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px;}
+  @media (max-width:640px){.btn-row{grid-template-columns:1fr;}}
+  .note{font-size:12.5px;color:var(--stone-mid);margin-top:16px;text-align:center;}
+  .status-msg{margin-top:14px;font-size:14px;text-align:center;font-weight:600;display:none;}
+  .status-msg.ok{color:#1a7a3d;}
+  .status-msg.err{color:#a0301f;}
+
+  footer{padding:32px 0;text-align:center;font-size:13px;color:var(--stone-mid);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">PEDRA<span>DIRETA</span></div>
+    <nav class="nav-links">
+      <a href="#portfolio">Portfólio</a>
+      <a href="#aplicacoes">Aplicações</a>
+      <a href="#encomenda">Pedir Orçamento</a>
+    </nav>
+    <a class="nav-cta" href="#encomenda">Fazer Pedido</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Portfólio de trabalhos e pedidos de orçamento</h1>
+    <p class="lead">Veja exemplos de material disponível e envie o seu pedido diretamente por email, WhatsApp ou em PDF para anexar onde precisar.</p>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <h2 class="section-title">Portfólio</h2>
+    <p class="section-sub">Amostras de material e acabamentos. As imagens são atualizadas automaticamente ao colocar novos ficheiros na pasta <code>images/</code> — sem precisar de editar o código.</p>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <img src="images/amostras-cores.png" alt="Amostras de granito e mármore" onerror="this.style.display='none'">
+        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
+        <div class="cap">Amostras — Gama de Cores</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="images/corredor-armazem.png" alt="Corredor de armazém com chapas" onerror="this.style.display='none'">
+        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
+        <div class="cap">Armazém — Chapas em Exposição</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="images/armazem-chapas-01.webp" alt="Chapas de mármore em stand" onerror="this.style.display='none'">
+        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
+        <div class="cap">Chapas de Mármore</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="images/armazem-chapas-02.webp" alt="Corredor de chapas em stand" onerror="this.style.display='none'">
+        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
+        <div class="cap">Seleção de Chapas</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="images/bloco-textura.png" alt="Textura de bloco de granito" onerror="this.style.display='none'">
+        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
+        <div class="cap">Textura — Bloco de Granito</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="images/obra-01.jpg" alt="Obra concluída" onerror="this.style.display='none'">
+        <span class="fallback" style="position:absolute;top:0;">Foto em breve — coloque obra-01.jpg</span>
+        <div class="cap">A sua próxima obra aqui</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="aplicacoes" class="alt">
+  <div class="container">
+    <h2 class="section-title">Aplicações</h2>
+    <p class="section-sub">Exemplos de utilização real em cozinhas, casas de banho, escadas e fachadas. Clique numa imagem para ampliar.</p>
+    <div class="app-grid">
+
+      <div class="app-card" onclick="abrirLightbox('images/cozinha-marmore-branco.jpg')">
+        <img src="images/cozinha-marmore-branco.jpg" alt="Cozinha com bancada em mármore branco" loading="lazy">
+        <div class="cap">Cozinha — Bancada em Mármore</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/cozinha-marmore-azul.jpg')">
+        <img src="images/cozinha-marmore-azul.jpg" alt="Cozinha com ilha em mármore" loading="lazy">
+        <div class="cap">Cozinha — Ilha Central</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/hall-escada-marmore.jpg')">
+        <img src="images/hall-escada-marmore.jpg" alt="Hall de entrada com escada em mármore" loading="lazy">
+        <div class="cap">Hall de Entrada — Escadaria</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/cozinha-pedra-exotica.jpg')">
+        <img src="images/cozinha-pedra-exotica.jpg" alt="Cozinha com ilha em pedra exótica" loading="lazy">
+        <div class="cap">Cozinha — Pedra Exótica</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/fachada-piscina-pedra.jpg')">
+        <img src="images/fachada-piscina-pedra.jpg" alt="Fachada revestida a pedra com piscina" loading="lazy">
+        <div class="cap">Fachada — Revestimento Exterior</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/bancada-banheiro-pedra.jpg')">
+        <img src="images/bancada-banheiro-pedra.jpg" alt="Casa de banho com bancada em pedra" loading="lazy">
+        <div class="cap">Casa de Banho — Bancada</div>
+      </div>
+
+      <div class="app-card" onclick="abrirLightbox('images/obra-02.jpg')" style="background:linear-gradient(135deg,#c9c2ad,#8f887a);">
+        <img src="images/obra-02.jpg" alt="Aplicação futura" loading="lazy" onerror="this.style.display='none'">
+        <div class="cap">A sua próxima obra aqui</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="fecharLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<section id="encomenda" class="alt">
+  <div class="container">
+    <h2 class="section-title">Pedir Orçamento</h2>
+    <p class="section-sub">Preencha os dados do projeto e escolha como quer enviar: email, WhatsApp (mensagem escrita) ou descarregar em PDF para anexar onde precisar.</p>
+
+    <div class="form-wrap">
+      <form id="orderForm">
+
+        <div class="form-row">
+          <div>
+            <label>Nome *</label>
+            <input type="text" id="f_nome" required>
+          </div>
+          <div>
+            <label>Empresa / Obra</label>
+            <input type="text" id="f_empresa">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Email *</label>
+            <input type="email" id="f_email" required>
+          </div>
+          <div>
+            <label>WhatsApp / Telefone *</label>
+            <input type="tel" id="f_telefone" placeholder="+351 9XX XXX XXX" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Tipo de cliente</label>
+            <select id="f_tipo">
+              <option>Arquiteto / Designer</option>
+              <option>Construtor / Empreiteiro</option>
+              <option>Marmorista / Fabricante</option>
+              <option>Promotor Imobiliário</option>
+              <option>Câmara / Obra Pública</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div>
+            <label>Referência do produto (se souber)</label>
+            <input type="text" id="f_ref" placeholder="Ex: GR-CIN-01">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Acabamento</label>
+            <select id="f_acabamento">
+              <option>Polido</option>
+              <option>Amaciado</option>
+              <option>Bujardado</option>
+              <option>Flamejado</option>
+              <option>Jateado</option>
+              <option>Ainda não sei</option>
+            </select>
+          </div>
+          <div>
+            <label>Espessura</label>
+            <select id="f_espessura">
+              <option>2 cm</option>
+              <option>3 cm</option>
+              <option>4–20 cm (sob medida)</option>
+              <option>Ainda não sei</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="full">
+            <label>Quantidade / m² estimados</label>
+            <input type="text" id="f_qtd" placeholder="Ex: 45 m²">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="full">
+            <label>Detalhes do projeto</label>
+            <textarea id="f_msg" placeholder="Descreva a obra, prazo pretendido, morada de entrega, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="full">
+            <label>Anexar ficheiro (PDF, Excel ou imagens)</label>
+            <input type="file" id="f_anexo" name="anexo" multiple accept=".pdf,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp">
+            <p class="note" style="margin-top:6px;text-align:left;">Pode anexar planta, ficha técnica ou fotos (PDF, Excel ou imagem). Limite recomendado: até 10&nbsp;MB no total.</p>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-email" onclick="enviarPorEmail()">Enviar por Email</button>
+          <button type="button" class="btn btn-whatsapp" onclick="enviarPorWhatsapp()">Enviar por WhatsApp</button>
+          <button type="button" class="btn btn-pdf" onclick="descarregarPDF()">Descarregar em PDF</button>
+        </div>
+
+        <div id="statusMsg" class="status-msg"></div>
+        <p class="note">WhatsApp: mensagens escritas apenas. Se preferir enviar o PDF por WhatsApp ou Email como anexo, descarregue-o primeiro e anexe-o manualmente na conversa.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; <span id="year"></span> Pedra Direta — Alex Silva | Consultoria de Rochas Ornamentais
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function abrirLightbox(src){
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function fecharLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+// ============================================================
+// CONFIGURAÇÃO — substitua pelos seus próprios IDs/chaves
+// ============================================================
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/SEU_FORM_ID";   // Passo a passo abaixo
+const WEB3FORMS_ACCESS_KEY = "SUA_CHAVE_WEB3FORMS";                 // Alternativa ao Formspree
+const WHATSAPP_NUMBER = "351XXXXXXXXX";                             // Seu número, com indicativo
+// ============================================================
+
+function getFormData(){
+  return {
+    nome: document.getElementById('f_nome').value,
+    empresa: document.getElementById('f_empresa').value,
+    email: document.getElementById('f_email').value,
+    telefone: document.getElementById('f_telefone').value,
+    tipo: document.getElementById('f_tipo').value,
+    ref: document.getElementById('f_ref').value,
+    acabamento: document.getElementById('f_acabamento').value,
+    espessura: document.getElementById('f_espessura').value,
+    qtd: document.getElementById('f_qtd').value,
+    msg: document.getElementById('f_msg').value
+  };
+}
+
+function validar(d){
+  if(!d.nome || !d.email || !d.telefone){
+    mostrarStatus('Por favor preencha Nome, Email e WhatsApp/Telefone.', false);
+    return false;
+  }
+  return true;
+}
+
+function mostrarStatus(texto, ok){
+  const el = document.getElementById('statusMsg');
+  el.textContent = texto;
+  el.className = 'status-msg ' + (ok ? 'ok' : 'err');
+  el.style.display = 'block';
+}
+
+function resumoTexto(d){
+  return `PEDIDO DE ORÇAMENTO - PEDRA DIRETA
+------------------------------------
+Nome: ${d.nome}
+Empresa/Obra: ${d.empresa || '-'}
+Email: ${d.email}
+Telefone/WhatsApp: ${d.telefone}
+Tipo de cliente: ${d.tipo}
+Referência: ${d.ref || '-'}
+Acabamento: ${d.acabamento}
+Espessura: ${d.espessura}
+Quantidade/m²: ${d.qtd || '-'}
+Detalhes: ${d.msg || '-'}
+Data: ${new Date().toLocaleString('pt-PT')}`;
+}
+
+// ---------- 1) ENVIAR POR EMAIL (Formspree) — inclui anexos (PDF/Excel/imagens) ----------
+async function enviarPorEmail(){
+  const d = getFormData();
+  if(!validar(d)) return;
+
+  if(FORMSPREE_ENDPOINT.includes('SEU_FORM_ID')){
+    mostrarStatus('Configure primeiro o Formspree (ver instruções enviadas) antes de usar este botão.', false);
+    return;
+  }
+
+  try{
+    // FormData já inclui automaticamente o(s) ficheiro(s) do campo "anexo" (PDF, Excel, imagens),
+    // porque o Formspree aceita submissões multipart/form-data com anexos.
+    const fd = new FormData(document.getElementById('orderForm'));
+    fd.append('pedido_resumo', resumoTexto(d));
+    fd.append('_subject', 'Novo pedido de orçamento - Pedra Direta');
+
+    const resp = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {'Accept': 'application/json'},
+      body: fd
+    });
+    if(resp.ok){
+      mostrarStatus('Pedido (com anexos, se enviados) enviado por email com sucesso!', true);
+    } else {
+      mostrarStatus('Não foi possível enviar. Verifique o tamanho dos anexos (máx. ~10MB) ou use o WhatsApp.', false);
+    }
+  } catch(e){
+    mostrarStatus('Erro de ligação. Tente novamente ou use o WhatsApp.', false);
+  }
+}
+
+// ---------- Alternativa: ENVIAR POR EMAIL via Web3Forms (com anexo) ----------
+// Para usar esta em vez da Formspree, troque a chamada do botão "Enviar por Email"
+// de enviarPorEmail() para enviarPorEmailWeb3Forms() no HTML acima.
+// Nota: a API do Web3Forms aceita UM anexo por envio (o primeiro ficheiro escolhido).
+// Se o cliente anexar vários ficheiros, use antes o botão "Enviar por Email" (Formspree),
+// que aceita múltiplos anexos, ou peça para reenviar cada ficheiro separadamente.
+function ficheiroParaBase64(file){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result); // já vem como data:...;base64,XXXX
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function enviarPorEmailWeb3Forms(){
+  const d = getFormData();
+  if(!validar(d)) return;
+
+  if(WEB3FORMS_ACCESS_KEY.includes('SUA_CHAVE')){
+    mostrarStatus('Configure primeiro o Web3Forms (ver instruções enviadas).', false);
+    return;
+  }
+
+  try{
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: 'Novo pedido de orçamento - Pedra Direta',
+      from_name: d.nome,
+      email: d.email,
+      message: resumoTexto(d)
+    };
+
+    const ficheiros = document.getElementById('f_anexo').files;
+    if(ficheiros && ficheiros.length > 0){
+      payload.attachment = await ficheiroParaBase64(ficheiros[0]); // PDF, Excel ou imagem
+    }
+
+    const resp = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await resp.json();
+    if(data.success){
+      mostrarStatus('Pedido enviado por email com sucesso!', true);
+    } else {
+      mostrarStatus('Não foi possível enviar. Verifique o tamanho do anexo (máx. ~5MB) ou use o WhatsApp.', false);
+    }
+  } catch(e){
+    mostrarStatus('Erro de ligação. Tente novamente ou use o WhatsApp.', false);
+  }
+}
+
+// ---------- 2) ENVIAR POR WHATSAPP (texto pronto) ----------
+function enviarPorWhatsapp(){
+  const d = getFormData();
+  if(!validar(d)) return;
+  const texto = encodeURIComponent(resumoTexto(d) + '\n\n(Se preferir, descarregue também o PDF do pedido e anexe-o aqui.)');
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`, '_blank');
+}
+
+// ---------- 3) DESCARREGAR EM PDF ----------
+function descarregarPDF(){
+  const d = getFormData();
+  if(!validar(d)) return;
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(16);
+  doc.text('Ficha de Pedido de Orçamento', 15, 20);
+  doc.setFontSize(11);
+  doc.text('Pedra Direta — Consultoria de Rochas Ornamentais', 15, 27);
+  doc.line(15, 31, 195, 31);
+
+  const linhas = [
+    ['Nome', d.nome],
+    ['Empresa / Obra', d.empresa || '-'],
+    ['Email', d.email],
+    ['Telefone / WhatsApp', d.telefone],
+    ['Tipo de cliente', d.tipo],
+    ['Referência', d.ref || '-'],
+    ['Acabamento', d.acabamento],
+    ['Espessura', d.espessura],
+    ['Quantidade / m²', d.qtd || '-'],
+    ['Data', new Date().toLocaleString('pt-PT')]
+  ];
+
+  let y = 42;
+  doc.setFontSize(11);
+  linhas.forEach(([label, valor])=>{
+    doc.setFont(undefined, 'bold');
+    doc.text(label + ':', 15, y);
+    doc.setFont(undefined, 'normal');
+    doc.text(String(valor), 70, y);
+    y += 9;
+  });
+
+  y += 4;
+  doc.setFont(undefined, 'bold');
+  doc.text('Detalhes do projeto:', 15, y);
+  y += 8;
+  doc.setFont(undefined, 'normal');
+  const detalhes = doc.splitTextToSize(d.msg || '-', 180);
+  doc.text(detalhes, 15, y);
+
+  const nomeArquivo = `pedido-orcamento-${d.nome.replace(/\s+/g,'-').toLowerCase() || 'cliente'}.pdf`;
+  doc.save(nomeArquivo);
+  mostrarStatus('PDF descarregado. Pode agora anexá-lo no email ou WhatsApp.', true);
+}
+</script>
+
+</body>
+</html>
