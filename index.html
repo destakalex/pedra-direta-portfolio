@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedra Direta | Portfólio & Encomendas</title>
+<title>Pedra Direta | Portfólio &amp; Encomendas</title>
 <meta name="description" content="Portfólio de trabalhos e pedidos de orçamento de rochas ornamentais — Alex Silva, consultoria de granitos e mármores.">
 <style>
   :root{
@@ -17,13 +17,15 @@
   img{display:block;max-width:100%;}
   .container{max-width:1140px;margin:0 auto;padding:0 24px;}
   header{position:sticky;top:0;z-index:50;background:rgba(250,249,246,0.96);backdrop-filter:blur(6px);border-bottom:1px solid #e2ddd0;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
-  .logo{font-size:20px;font-weight:700;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:16px;}
+  .logo{font-size:20px;font-weight:700;white-space:nowrap;}
   .logo span{color:var(--accent);}
   .nav-links{display:flex;gap:28px;font-size:15px;font-weight:500;}
   .nav-links a:hover{color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:16px;}
   .nav-cta{background:var(--accent);color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;white-space:nowrap;}
   .nav-cta:hover{background:var(--accent-dark);}
+  #langSwitcher{border:1px solid #d8d2c0;border-radius:6px;padding:7px 10px;font-size:13px;background:#fdfcfa;color:var(--stone-dark);font-family:inherit;cursor:pointer;}
   @media (max-width:760px){.nav-links{display:none;}}
   .hero{padding:64px 0 48px;background:linear-gradient(180deg,#f2efe7 0%,var(--bg) 100%);text-align:center;}
   .hero h1{font-size:clamp(26px,4vw,40px);font-weight:800;max-width:760px;margin:0 auto 14px;}
@@ -87,61 +89,73 @@
   <div class="container nav">
     <div class="logo">PEDRA<span>DIRETA</span></div>
     <nav class="nav-links">
-      <a href="#portfolio">Portfólio</a>
-      <a href="#aplicacoes">Aplicações</a>
-      <a href="#encomenda">Pedir Orçamento</a>
+      <a href="#portfolio" data-i18n="nav_portfolio">Portfólio</a>
+      <a href="#aplicacoes" data-i18n="nav_aplicacoes">Aplicações</a>
+      <a href="#encomenda" data-i18n="nav_encomenda">Pedir Orçamento</a>
     </nav>
-    <a class="nav-cta" href="#encomenda">Fazer Pedido</a>
+    <div class="nav-right">
+      <select id="langSwitcher" aria-label="Language / Idioma">
+        <option value="pt">Português</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="zh">中文</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Русский</option>
+        <option value="nl">Nederlands</option>
+        <option value="da">Dansk</option>
+      </select>
+      <a class="nav-cta" href="#encomenda" data-i18n="nav_cta">Fazer Pedido</a>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <h1>Portfólio de trabalhos e pedidos de orçamento</h1>
-    <p class="lead">Veja exemplos de material disponível e envie o seu pedido diretamente por email, WhatsApp ou em PDF para anexar onde precisar.</p>
+    <h1 data-i18n="hero_title">Portfólio de trabalhos e pedidos de orçamento</h1>
+    <p class="lead" data-i18n="hero_lead">Veja exemplos de material disponível e envie o seu pedido diretamente por email, WhatsApp ou em PDF para anexar onde precisar.</p>
   </div>
 </section>
 
 <section id="portfolio">
   <div class="container">
-    <h2 class="section-title">Portfólio</h2>
-    <p class="section-sub">Amostras de material e acabamentos. As imagens são atualizadas automaticamente ao colocar novos ficheiros na pasta <code>images/</code> — sem precisar de editar o código.</p>
+    <h2 class="section-title" data-i18n="portfolio_title">Portfólio</h2>
+    <p class="section-sub" data-i18n="portfolio_sub">Amostras de material e acabamentos disponíveis.</p>
     <div class="portfolio-grid">
 
       <div class="portfolio-card">
         <img src="images/amostras-cores.png" alt="Amostras de granito e mármore" onerror="this.style.display='none'">
-        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
-        <div class="cap">Amostras — Gama de Cores</div>
+        <span class="fallback" style="position:absolute;top:0;" data-i18n="foto_em_breve">Foto em breve</span>
+        <div class="cap" data-i18n="cap_amostras">Amostras — Gama de Cores</div>
       </div>
 
       <div class="portfolio-card">
         <img src="images/corredor-armazem.png" alt="Corredor de armazém com chapas" onerror="this.style.display='none'">
-        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
-        <div class="cap">Armazém — Chapas em Exposição</div>
+        <span class="fallback" style="position:absolute;top:0;" data-i18n="foto_em_breve">Foto em breve</span>
+        <div class="cap" data-i18n="cap_armazem">Armazém — Chapas em Exposição</div>
       </div>
 
       <div class="portfolio-card">
         <img src="images/armazem-chapas-01.webp" alt="Chapas de mármore em stand" onerror="this.style.display='none'">
-        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
-        <div class="cap">Chapas de Mármore</div>
+        <span class="fallback" style="position:absolute;top:0;" data-i18n="foto_em_breve">Foto em breve</span>
+        <div class="cap" data-i18n="cap_chapas_marmore">Chapas de Mármore</div>
       </div>
 
       <div class="portfolio-card">
         <img src="images/armazem-chapas-02.webp" alt="Corredor de chapas em stand" onerror="this.style.display='none'">
-        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
-        <div class="cap">Seleção de Chapas</div>
+        <span class="fallback" style="position:absolute;top:0;" data-i18n="foto_em_breve">Foto em breve</span>
+        <div class="cap" data-i18n="cap_selecao_chapas">Seleção de Chapas</div>
       </div>
 
       <div class="portfolio-card">
         <img src="images/bloco-textura.png" alt="Textura de bloco de granito" onerror="this.style.display='none'">
-        <span class="fallback" style="position:absolute;top:0;">Foto em breve</span>
-        <div class="cap">Textura — Bloco de Granito</div>
+        <span class="fallback" style="position:absolute;top:0;" data-i18n="foto_em_breve">Foto em breve</span>
+        <div class="cap" data-i18n="cap_textura">Textura — Bloco de Granito</div>
       </div>
 
       <div class="portfolio-card">
         <img src="images/obra-01.jpg" alt="Obra concluída" onerror="this.style.display='none'">
-        <span class="fallback" style="position:absolute;top:0;">Foto em breve — coloque obra-01.jpg</span>
-        <div class="cap">A sua próxima obra aqui</div>
+        <span class="fallback" style="position:absolute;top:0;" data-i18n="foto_em_breve_obra">Foto em breve — coloque obra-01.jpg</span>
+        <div class="cap" data-i18n="cap_obra_futura">A sua próxima obra aqui</div>
       </div>
 
     </div>
@@ -150,43 +164,43 @@
 
 <section id="aplicacoes" class="alt">
   <div class="container">
-    <h2 class="section-title">Aplicações</h2>
-    <p class="section-sub">Exemplos de utilização real em cozinhas, casas de banho, escadas e fachadas. Clique numa imagem para ampliar.</p>
+    <h2 class="section-title" data-i18n="aplicacoes_title">Aplicações</h2>
+    <p class="section-sub" data-i18n="aplicacoes_sub">Exemplos de utilização real em cozinhas, casas de banho, escadas e fachadas. Clique numa imagem para ampliar.</p>
     <div class="app-grid">
 
       <div class="app-card" onclick="abrirLightbox('images/cozinha-marmore-branco.jpg')">
         <img src="images/cozinha-marmore-branco.jpg" alt="Cozinha com bancada em mármore branco" loading="lazy">
-        <div class="cap">Cozinha — Bancada em Mármore</div>
+        <div class="cap" data-i18n="cap_cozinha_branco">Cozinha — Bancada em Mármore</div>
       </div>
 
       <div class="app-card" onclick="abrirLightbox('images/cozinha-marmore-azul.jpg')">
         <img src="images/cozinha-marmore-azul.jpg" alt="Cozinha com ilha em mármore" loading="lazy">
-        <div class="cap">Cozinha — Ilha Central</div>
+        <div class="cap" data-i18n="cap_cozinha_ilha">Cozinha — Ilha Central</div>
       </div>
 
       <div class="app-card" onclick="abrirLightbox('images/hall-escada-marmore.jpg')">
         <img src="images/hall-escada-marmore.jpg" alt="Hall de entrada com escada em mármore" loading="lazy">
-        <div class="cap">Hall de Entrada — Escadaria</div>
+        <div class="cap" data-i18n="cap_hall_escada">Hall de Entrada — Escadaria</div>
       </div>
 
       <div class="app-card" onclick="abrirLightbox('images/cozinha-pedra-exotica.jpg')">
         <img src="images/cozinha-pedra-exotica.jpg" alt="Cozinha com ilha em pedra exótica" loading="lazy">
-        <div class="cap">Cozinha — Pedra Exótica</div>
+        <div class="cap" data-i18n="cap_cozinha_exotica">Cozinha — Pedra Exótica</div>
       </div>
 
       <div class="app-card" onclick="abrirLightbox('images/fachada-piscina-pedra.jpg')">
         <img src="images/fachada-piscina-pedra.jpg" alt="Fachada revestida a pedra com piscina" loading="lazy">
-        <div class="cap">Fachada — Revestimento Exterior</div>
+        <div class="cap" data-i18n="cap_fachada">Fachada — Revestimento Exterior</div>
       </div>
 
       <div class="app-card" onclick="abrirLightbox('images/bancada-banheiro-pedra.jpg')">
         <img src="images/bancada-banheiro-pedra.jpg" alt="Casa de banho com bancada em pedra" loading="lazy">
-        <div class="cap">Casa de Banho — Bancada</div>
+        <div class="cap" data-i18n="cap_banheiro">Casa de Banho — Bancada</div>
       </div>
 
       <div class="app-card" onclick="abrirLightbox('images/obra-02.jpg')" style="background:linear-gradient(135deg,#c9c2ad,#8f887a);">
         <img src="images/obra-02.jpg" alt="Aplicação futura" loading="lazy" onerror="this.style.display='none'">
-        <div class="cap">A sua próxima obra aqui</div>
+        <div class="cap" data-i18n="cap_obra_futura">A sua próxima obra aqui</div>
       </div>
 
     </div>
@@ -200,105 +214,105 @@
 
 <section id="encomenda" class="alt">
   <div class="container">
-    <h2 class="section-title">Pedir Orçamento</h2>
-    <p class="section-sub">Preencha os dados do projeto e escolha como quer enviar: email, WhatsApp (mensagem escrita) ou descarregar em PDF para anexar onde precisar.</p>
+    <h2 class="section-title" data-i18n="encomenda_title">Pedir Orçamento</h2>
+    <p class="section-sub" data-i18n="encomenda_sub">Preencha os dados do projeto e escolha como quer enviar: email, WhatsApp (mensagem escrita) ou descarregar em PDF para anexar onde precisar.</p>
 
     <div class="form-wrap">
       <form id="orderForm">
 
         <div class="form-row">
           <div>
-            <label>Nome *</label>
+            <label data-i18n="label_nome">Nome *</label>
             <input type="text" id="f_nome" required>
           </div>
           <div>
-            <label>Empresa / Obra</label>
+            <label data-i18n="label_empresa">Empresa / Obra</label>
             <input type="text" id="f_empresa">
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label>Email *</label>
+            <label data-i18n="label_email">Email *</label>
             <input type="email" id="f_email" required>
           </div>
           <div>
-            <label>WhatsApp / Telefone *</label>
-            <input type="tel" id="f_telefone" placeholder="+351 9XX XXX XXX" required>
+            <label data-i18n="label_telefone">WhatsApp / Telefone *</label>
+            <input type="tel" id="f_telefone" data-i18n-placeholder="placeholder_telefone" placeholder="+351 9XX XXX XXX" required>
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label>Tipo de cliente</label>
+            <label data-i18n="label_tipo">Tipo de cliente</label>
             <select id="f_tipo">
-              <option>Arquiteto / Designer</option>
-              <option>Construtor / Empreiteiro</option>
-              <option>Marmorista / Fabricante</option>
-              <option>Promotor Imobiliário</option>
-              <option>Câmara / Obra Pública</option>
-              <option>Outro</option>
+              <option data-i18n="opt_tipo1">Arquiteto / Designer</option>
+              <option data-i18n="opt_tipo2">Construtor / Empreiteiro</option>
+              <option data-i18n="opt_tipo3">Marmorista / Fabricante</option>
+              <option data-i18n="opt_tipo4">Promotor Imobiliário</option>
+              <option data-i18n="opt_tipo5">Câmara / Obra Pública</option>
+              <option data-i18n="opt_tipo6">Outro</option>
             </select>
           </div>
           <div>
-            <label>Referência do produto (se souber)</label>
-            <input type="text" id="f_ref" placeholder="Ex: GR-CIN-01">
+            <label data-i18n="label_ref">Referência do produto (se souber)</label>
+            <input type="text" id="f_ref" data-i18n-placeholder="placeholder_ref" placeholder="Ex: GR-CIN-01">
           </div>
         </div>
 
         <div class="form-row">
           <div>
-            <label>Acabamento</label>
+            <label data-i18n="label_acabamento">Acabamento</label>
             <select id="f_acabamento">
-              <option>Polido</option>
-              <option>Amaciado</option>
-              <option>Bujardado</option>
-              <option>Flamejado</option>
-              <option>Jateado</option>
-              <option>Ainda não sei</option>
+              <option data-i18n="opt_acab1">Polido</option>
+              <option data-i18n="opt_acab2">Amaciado</option>
+              <option data-i18n="opt_acab3">Bujardado</option>
+              <option data-i18n="opt_acab4">Flamejado</option>
+              <option data-i18n="opt_acab5">Jateado</option>
+              <option data-i18n="opt_acab6">Ainda não sei</option>
             </select>
           </div>
           <div>
-            <label>Espessura</label>
+            <label data-i18n="label_espessura">Espessura</label>
             <select id="f_espessura">
-              <option>2 cm</option>
-              <option>3 cm</option>
-              <option>4–20 cm (sob medida)</option>
-              <option>Ainda não sei</option>
+              <option data-i18n="opt_esp1">2 cm</option>
+              <option data-i18n="opt_esp2">3 cm</option>
+              <option data-i18n="opt_esp3">4–20 cm (sob medida)</option>
+              <option data-i18n="opt_esp4">Ainda não sei</option>
             </select>
           </div>
         </div>
 
         <div class="form-row">
           <div class="full">
-            <label>Quantidade / m² estimados</label>
-            <input type="text" id="f_qtd" placeholder="Ex: 45 m²">
+            <label data-i18n="label_qtd">Quantidade / m² estimados</label>
+            <input type="text" id="f_qtd" data-i18n-placeholder="placeholder_qtd" placeholder="Ex: 45 m²">
           </div>
         </div>
 
         <div class="form-row">
           <div class="full">
-            <label>Detalhes do projeto</label>
-            <textarea id="f_msg" placeholder="Descreva a obra, prazo pretendido, morada de entrega, etc."></textarea>
+            <label data-i18n="label_detalhes">Detalhes do projeto</label>
+            <textarea id="f_msg" data-i18n-placeholder="placeholder_detalhes" placeholder="Descreva a obra, prazo pretendido, morada de entrega, etc."></textarea>
           </div>
         </div>
 
         <div class="form-row">
           <div class="full">
-            <label>Anexar ficheiro (PDF, Excel ou imagens)</label>
+            <label data-i18n="label_anexo">Anexar ficheiro (PDF, Excel ou imagens)</label>
             <input type="file" id="f_anexo" name="anexo" multiple accept=".pdf,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp">
-            <p class="note" style="margin-top:6px;text-align:left;">Pode anexar planta, ficha técnica ou fotos (PDF, Excel ou imagem). Limite recomendado: até 10&nbsp;MB no total.</p>
+            <p class="note" style="margin-top:6px;text-align:left;" data-i18n="note_anexo">Pode anexar planta, ficha técnica ou fotos (PDF, Excel ou imagem). Limite recomendado: até 10&nbsp;MB no total.</p>
           </div>
         </div>
 
         <div class="btn-row">
-          <button type="button" class="btn btn-email" onclick="enviarPorEmail()">Enviar por Email</button>
-          <button type="button" class="btn btn-whatsapp" onclick="enviarPorWhatsapp()">Enviar por WhatsApp</button>
-          <button type="button" class="btn btn-pdf" onclick="descarregarPDF()">Descarregar em PDF</button>
+          <button type="button" class="btn btn-email" onclick="enviarPorEmail()" data-i18n="btn_email">Enviar por Email</button>
+          <button type="button" class="btn btn-whatsapp" onclick="enviarPorWhatsapp()" data-i18n="btn_whatsapp">Enviar por WhatsApp</button>
+          <button type="button" class="btn btn-pdf" onclick="descarregarPDF()" data-i18n="btn_pdf">Descarregar em PDF</button>
         </div>
 
         <div id="statusMsg" class="status-msg"></div>
-        <p class="note">WhatsApp: mensagens escritas apenas. Se preferir enviar o PDF por WhatsApp ou Email como anexo, descarregue-o primeiro e anexe-o manualmente na conversa.</p>
+        <p class="note" data-i18n="note_whatsapp">WhatsApp: mensagens escritas apenas. Se preferir enviar o PDF por WhatsApp ou Email como anexo, descarregue-o primeiro e anexe-o manualmente na conversa.</p>
       </form>
     </div>
   </div>
@@ -306,7 +320,7 @@
 
 <footer>
   <div class="container">
-    &copy; <span id="year"></span> Pedra Direta — Alex Silva | Consultoria de Rochas Ornamentais
+    &copy; <span id="year"></span> Pedra Direta — Alex Silva | <span data-i18n="footer_sub">Consultoria de Rochas Ornamentais</span>
   </div>
 </footer>
 
@@ -330,6 +344,359 @@ const WEB3FORMS_ACCESS_KEY = "SUA_CHAVE_WEB3FORMS";                 // Alternati
 const WHATSAPP_NUMBER = "351XXXXXXXXX";                             // Seu número, com indicativo
 // ============================================================
 
+// ============================================================
+// TRADUÇÕES — 8 idiomas + fallback automático em inglês
+// ============================================================
+const translations = {
+  pt: {
+    nav_portfolio:"Portfólio", nav_aplicacoes:"Aplicações", nav_encomenda:"Pedir Orçamento", nav_cta:"Fazer Pedido",
+    hero_title:"Portfólio de trabalhos e pedidos de orçamento",
+    hero_lead:"Veja exemplos de material disponível e envie o seu pedido diretamente por email, WhatsApp ou em PDF para anexar onde precisar.",
+    portfolio_title:"Portfólio", portfolio_sub:"Amostras de material e acabamentos disponíveis.",
+    foto_em_breve:"Foto em breve", foto_em_breve_obra:"Foto em breve — coloque obra-01.jpg",
+    cap_amostras:"Amostras — Gama de Cores", cap_armazem:"Armazém — Chapas em Exposição",
+    cap_chapas_marmore:"Chapas de Mármore", cap_selecao_chapas:"Seleção de Chapas",
+    cap_textura:"Textura — Bloco de Granito", cap_obra_futura:"A sua próxima obra aqui",
+    aplicacoes_title:"Aplicações", aplicacoes_sub:"Exemplos de utilização real em cozinhas, casas de banho, escadas e fachadas. Clique numa imagem para ampliar.",
+    cap_cozinha_branco:"Cozinha — Bancada em Mármore", cap_cozinha_ilha:"Cozinha — Ilha Central",
+    cap_hall_escada:"Hall de Entrada — Escadaria", cap_cozinha_exotica:"Cozinha — Pedra Exótica",
+    cap_fachada:"Fachada — Revestimento Exterior", cap_banheiro:"Casa de Banho — Bancada",
+    encomenda_title:"Pedir Orçamento", encomenda_sub:"Preencha os dados do projeto e escolha como quer enviar: email, WhatsApp (mensagem escrita) ou descarregar em PDF para anexar onde precisar.",
+    label_nome:"Nome *", label_empresa:"Empresa / Obra", label_email:"Email *", label_telefone:"WhatsApp / Telefone *",
+    placeholder_telefone:"+351 9XX XXX XXX", label_tipo:"Tipo de cliente",
+    opt_tipo1:"Arquiteto / Designer", opt_tipo2:"Construtor / Empreiteiro", opt_tipo3:"Marmorista / Fabricante",
+    opt_tipo4:"Promotor Imobiliário", opt_tipo5:"Câmara / Obra Pública", opt_tipo6:"Outro",
+    label_ref:"Referência do produto (se souber)", placeholder_ref:"Ex: GR-CIN-01",
+    label_acabamento:"Acabamento", opt_acab1:"Polido", opt_acab2:"Amaciado", opt_acab3:"Bujardado",
+    opt_acab4:"Flamejado", opt_acab5:"Jateado", opt_acab6:"Ainda não sei",
+    label_espessura:"Espessura", opt_esp1:"2 cm", opt_esp2:"3 cm", opt_esp3:"4–20 cm (sob medida)", opt_esp4:"Ainda não sei",
+    label_qtd:"Quantidade / m² estimados", placeholder_qtd:"Ex: 45 m²",
+    label_detalhes:"Detalhes do projeto", placeholder_detalhes:"Descreva a obra, prazo pretendido, morada de entrega, etc.",
+    label_anexo:"Anexar ficheiro (PDF, Excel ou imagens)",
+    note_anexo:"Pode anexar planta, ficha técnica ou fotos (PDF, Excel ou imagem). Limite recomendado: até 10&nbsp;MB no total.",
+    btn_email:"Enviar por Email", btn_whatsapp:"Enviar por WhatsApp", btn_pdf:"Descarregar em PDF",
+    note_whatsapp:"WhatsApp: mensagens escritas apenas. Se preferir enviar o PDF por WhatsApp ou Email como anexo, descarregue-o primeiro e anexe-o manualmente na conversa.",
+    footer_sub:"Consultoria de Rochas Ornamentais",
+    msg_validar:"Por favor preencha Nome, Email e WhatsApp/Telefone.",
+    msg_email_configure:"Configure primeiro o Formspree (ver instruções enviadas) antes de usar este botão.",
+    msg_email_ok:"Pedido (com anexos, se enviados) enviado por email com sucesso!",
+    msg_email_fail:"Não foi possível enviar. Verifique o tamanho dos anexos (máx. ~10MB) ou use o WhatsApp.",
+    msg_email_error:"Erro de ligação. Tente novamente ou use o WhatsApp.",
+    msg_pdf_ok:"PDF descarregado. Pode agora anexá-lo no email ou WhatsApp."
+  },
+  en: {
+    nav_portfolio:"Portfolio", nav_aplicacoes:"Applications", nav_encomenda:"Request a Quote", nav_cta:"Make a Request",
+    hero_title:"Portfolio of work and quote requests",
+    hero_lead:"See examples of available material and send your request directly by email, WhatsApp or as a PDF to attach wherever you need.",
+    portfolio_title:"Portfolio", portfolio_sub:"Samples of available material and finishes.",
+    foto_em_breve:"Photo coming soon", foto_em_breve_obra:"Photo coming soon",
+    cap_amostras:"Samples — Color Range", cap_armazem:"Warehouse — Slabs on Display",
+    cap_chapas_marmore:"Marble Slabs", cap_selecao_chapas:"Slab Selection",
+    cap_textura:"Texture — Granite Block", cap_obra_futura:"Your next project here",
+    aplicacoes_title:"Applications", aplicacoes_sub:"Real-world examples in kitchens, bathrooms, staircases and façades. Click an image to enlarge.",
+    cap_cozinha_branco:"Kitchen — Marble Countertop", cap_cozinha_ilha:"Kitchen — Central Island",
+    cap_hall_escada:"Entrance Hall — Staircase", cap_cozinha_exotica:"Kitchen — Exotic Stone",
+    cap_fachada:"Façade — Exterior Cladding", cap_banheiro:"Bathroom — Countertop",
+    encomenda_title:"Request a Quote", encomenda_sub:"Fill in your project details and choose how to send it: email, WhatsApp (text only) or download as PDF to attach wherever needed.",
+    label_nome:"Name *", label_empresa:"Company / Project", label_email:"Email *", label_telefone:"WhatsApp / Phone *",
+    placeholder_telefone:"+1 XXX XXX XXXX", label_tipo:"Client type",
+    opt_tipo1:"Architect / Designer", opt_tipo2:"Builder / Contractor", opt_tipo3:"Stone Fabricator",
+    opt_tipo4:"Property Developer", opt_tipo5:"Municipality / Public Works", opt_tipo6:"Other",
+    label_ref:"Product reference (if known)", placeholder_ref:"e.g. GR-CIN-01",
+    label_acabamento:"Finish", opt_acab1:"Polished", opt_acab2:"Honed", opt_acab3:"Bush-hammered",
+    opt_acab4:"Flamed", opt_acab5:"Sandblasted", opt_acab6:"Not sure yet",
+    label_espessura:"Thickness", opt_esp1:"2 cm", opt_esp2:"3 cm", opt_esp3:"4–20 cm (custom)", opt_esp4:"Not sure yet",
+    label_qtd:"Estimated quantity / m²", placeholder_qtd:"e.g. 45 m²",
+    label_detalhes:"Project details", placeholder_detalhes:"Describe the project, desired timeline, delivery address, etc.",
+    label_anexo:"Attach file (PDF, Excel or images)",
+    note_anexo:"You can attach a floor plan, spec sheet or photos (PDF, Excel or image). Recommended limit: up to 10&nbsp;MB total.",
+    btn_email:"Send by Email", btn_whatsapp:"Send by WhatsApp", btn_pdf:"Download as PDF",
+    note_whatsapp:"WhatsApp: text messages only. To send the PDF by WhatsApp or email as an attachment, download it first and attach it manually to the conversation.",
+    footer_sub:"Ornamental Stone Consulting",
+    msg_validar:"Please fill in Name, Email and WhatsApp/Phone.",
+    msg_email_configure:"Please configure Formspree first (see instructions sent) before using this button.",
+    msg_email_ok:"Request (with attachments, if sent) successfully sent by email!",
+    msg_email_fail:"Could not send. Check the attachment size (max ~10MB) or use WhatsApp.",
+    msg_email_error:"Connection error. Please try again or use WhatsApp.",
+    msg_pdf_ok:"PDF downloaded. You can now attach it to your email or WhatsApp."
+  },
+  es: {
+    nav_portfolio:"Portafolio", nav_aplicacoes:"Aplicaciones", nav_encomenda:"Solicitar Presupuesto", nav_cta:"Hacer Pedido",
+    hero_title:"Portafolio de trabajos y solicitudes de presupuesto",
+    hero_lead:"Vea ejemplos de material disponible y envíe su pedido directamente por email, WhatsApp o en PDF para adjuntar donde lo necesite.",
+    portfolio_title:"Portafolio", portfolio_sub:"Muestras de material y acabados disponibles.",
+    foto_em_breve:"Foto próximamente", foto_em_breve_obra:"Foto próximamente",
+    cap_amostras:"Muestras — Gama de Colores", cap_armazem:"Almacén — Placas en Exposición",
+    cap_chapas_marmore:"Placas de Mármol", cap_selecao_chapas:"Selección de Placas",
+    cap_textura:"Textura — Bloque de Granito", cap_obra_futura:"Su próxima obra aquí",
+    aplicacoes_title:"Aplicaciones", aplicacoes_sub:"Ejemplos reales en cocinas, baños, escaleras y fachadas. Haga clic en una imagen para ampliar.",
+    cap_cozinha_branco:"Cocina — Encimera de Mármol", cap_cozinha_ilha:"Cocina — Isla Central",
+    cap_hall_escada:"Recibidor — Escalera", cap_cozinha_exotica:"Cocina — Piedra Exótica",
+    cap_fachada:"Fachada — Revestimiento Exterior", cap_banheiro:"Baño — Encimera",
+    encomenda_title:"Solicitar Presupuesto", encomenda_sub:"Complete los datos del proyecto y elija cómo enviarlo: email, WhatsApp (solo texto) o descargar en PDF para adjuntar donde lo necesite.",
+    label_nome:"Nombre *", label_empresa:"Empresa / Obra", label_email:"Email *", label_telefone:"WhatsApp / Teléfono *",
+    placeholder_telefone:"+34 6XX XXX XXX", label_tipo:"Tipo de cliente",
+    opt_tipo1:"Arquitecto / Diseñador", opt_tipo2:"Constructor / Contratista", opt_tipo3:"Marmolista / Fabricante",
+    opt_tipo4:"Promotor Inmobiliario", opt_tipo5:"Ayuntamiento / Obra Pública", opt_tipo6:"Otro",
+    label_ref:"Referencia del producto (si la conoce)", placeholder_ref:"Ej: GR-CIN-01",
+    label_acabamento:"Acabado", opt_acab1:"Pulido", opt_acab2:"Amazacotado", opt_acab3:"Abujardado",
+    opt_acab4:"Flameado", opt_acab5:"Chorreado", opt_acab6:"Aún no lo sé",
+    label_espessura:"Espesor", opt_esp1:"2 cm", opt_esp2:"3 cm", opt_esp3:"4–20 cm (a medida)", opt_esp4:"Aún no lo sé",
+    label_qtd:"Cantidad / m² estimados", placeholder_qtd:"Ej: 45 m²",
+    label_detalhes:"Detalles del proyecto", placeholder_detalhes:"Describa la obra, plazo deseado, dirección de entrega, etc.",
+    label_anexo:"Adjuntar archivo (PDF, Excel o imágenes)",
+    note_anexo:"Puede adjuntar plano, ficha técnica o fotos (PDF, Excel o imagen). Límite recomendado: hasta 10&nbsp;MB en total.",
+    btn_email:"Enviar por Email", btn_whatsapp:"Enviar por WhatsApp", btn_pdf:"Descargar en PDF",
+    note_whatsapp:"WhatsApp: solo mensajes de texto. Si prefiere enviar el PDF por WhatsApp o email como adjunto, descárguelo primero y adjúntelo manualmente en la conversación.",
+    footer_sub:"Consultoría de Rocas Ornamentales",
+    msg_validar:"Por favor complete Nombre, Email y WhatsApp/Teléfono.",
+    msg_email_configure:"Configure primero Formspree (ver instrucciones enviadas) antes de usar este botón.",
+    msg_email_ok:"¡Pedido (con adjuntos, si se enviaron) enviado por email con éxito!",
+    msg_email_fail:"No se pudo enviar. Compruebe el tamaño de los adjuntos (máx. ~10MB) o use WhatsApp.",
+    msg_email_error:"Error de conexión. Inténtelo de nuevo o use WhatsApp.",
+    msg_pdf_ok:"PDF descargado. Ya puede adjuntarlo al email o WhatsApp."
+  },
+  zh: {
+    nav_portfolio:"作品集", nav_aplicacoes:"应用案例", nav_encomenda:"索取报价", nav_cta:"立即下单",
+    hero_title:"作品集与报价请求",
+    hero_lead:"查看现有石材范例，并通过电子邮件、WhatsApp 或 PDF 直接发送您的订单请求，方便随时附加使用。",
+    portfolio_title:"作品集", portfolio_sub:"现有石材与表面处理样品。",
+    foto_em_breve:"照片即将上传", foto_em_breve_obra:"照片即将上传",
+    cap_amostras:"样品 — 色彩系列", cap_armazem:"仓库 — 展示板材",
+    cap_chapas_marmore:"大理石板材", cap_selecao_chapas:"板材精选",
+    cap_textura:"纹理 — 花岗岩石块", cap_obra_futura:"您的下一个项目将展示于此",
+    aplicacoes_title:"应用案例", aplicacoes_sub:"厨房、浴室、楼梯和外墙的真实应用案例。点击图片可放大查看。",
+    cap_cozinha_branco:"厨房 — 大理石台面", cap_cozinha_ilha:"厨房 — 中央岛台",
+    cap_hall_escada:"入口大厅 — 楼梯", cap_cozinha_exotica:"厨房 — 珍稀石材",
+    cap_fachada:"外墙 — 外部饰面", cap_banheiro:"浴室 — 台面",
+    encomenda_title:"索取报价", encomenda_sub:"填写项目信息并选择发送方式：电子邮件、WhatsApp（仅文字信息）或下载 PDF 以便随时附加使用。",
+    label_nome:"姓名 *", label_empresa:"公司 / 项目", label_email:"电子邮件 *", label_telefone:"WhatsApp / 电话 *",
+    placeholder_telefone:"+86 1XX XXXX XXXX", label_tipo:"客户类型",
+    opt_tipo1:"建筑师 / 设计师", opt_tipo2:"建筑商 / 承包商", opt_tipo3:"石材加工商",
+    opt_tipo4:"地产开发商", opt_tipo5:"市政 / 公共工程", opt_tipo6:"其他",
+    label_ref:"产品编号（如知道）", placeholder_ref:"例：GR-CIN-01",
+    label_acabamento:"表面处理", opt_acab1:"抛光", opt_acab2:"亚光", opt_acab3:"荔枝面",
+    opt_acab4:"火烧面", opt_acab5:"喷砂面", opt_acab6:"尚未确定",
+    label_espessura:"厚度", opt_esp1:"2 厘米", opt_esp2:"3 厘米", opt_esp3:"4–20 厘米（定制）", opt_esp4:"尚未确定",
+    label_qtd:"预估数量 / 平方米", placeholder_qtd:"例：45 平方米",
+    label_detalhes:"项目详情", placeholder_detalhes:"请描述项目、期望工期、送货地址等。",
+    label_anexo:"附加文件（PDF、Excel 或图片）",
+    note_anexo:"您可以附加平面图、技术规格表或照片（PDF、Excel 或图片）。建议总大小不超过 10&nbsp;MB。",
+    btn_email:"通过电子邮件发送", btn_whatsapp:"通过 WhatsApp 发送", btn_pdf:"下载 PDF",
+    note_whatsapp:"WhatsApp：仅接受文字信息。如需通过 WhatsApp 或邮件发送 PDF 附件，请先下载后手动添加到对话中。",
+    footer_sub:"天然石材咨询顾问",
+    msg_validar:"请填写姓名、电子邮件和 WhatsApp/电话。",
+    msg_email_configure:"请先配置 Formspree（参见已发送的说明）后再使用此按钮。",
+    msg_email_ok:"订单（含附件，如有发送）已成功通过电子邮件发送！",
+    msg_email_fail:"发送失败。请检查附件大小（最大约10MB）或改用 WhatsApp。",
+    msg_email_error:"连接错误。请重试或改用 WhatsApp。",
+    msg_pdf_ok:"PDF 已下载。您现在可以将其附加到电子邮件或 WhatsApp。"
+  },
+  de: {
+    nav_portfolio:"Portfolio", nav_aplicacoes:"Anwendungen", nav_encomenda:"Angebot Anfordern", nav_cta:"Bestellung Aufgeben",
+    hero_title:"Projektportfolio und Angebotsanfragen",
+    hero_lead:"Sehen Sie Beispiele des verfügbaren Materials und senden Sie Ihre Anfrage direkt per E-Mail, WhatsApp oder als PDF zum Anhängen, wo immer Sie es benötigen.",
+    portfolio_title:"Portfolio", portfolio_sub:"Muster von verfügbarem Material und Oberflächen.",
+    foto_em_breve:"Foto folgt in Kürze", foto_em_breve_obra:"Foto folgt in Kürze",
+    cap_amostras:"Muster — Farbpalette", cap_armazem:"Lager — Ausgestellte Platten",
+    cap_chapas_marmore:"Marmorplatten", cap_selecao_chapas:"Plattenauswahl",
+    cap_textura:"Textur — Granitblock", cap_obra_futura:"Ihr nächstes Projekt hier",
+    aplicacoes_title:"Anwendungen", aplicacoes_sub:"Praxisbeispiele in Küchen, Bädern, Treppen und Fassaden. Klicken Sie auf ein Bild zum Vergrößern.",
+    cap_cozinha_branco:"Küche — Marmorarbeitsplatte", cap_cozinha_ilha:"Küche — Kochinsel",
+    cap_hall_escada:"Eingangshalle — Treppe", cap_cozinha_exotica:"Küche — Exotischer Stein",
+    cap_fachada:"Fassade — Außenverkleidung", cap_banheiro:"Badezimmer — Arbeitsplatte",
+    encomenda_title:"Angebot Anfordern", encomenda_sub:"Füllen Sie die Projektdaten aus und wählen Sie, wie Sie senden möchten: E-Mail, WhatsApp (nur Text) oder als PDF herunterladen, um es bei Bedarf anzuhängen.",
+    label_nome:"Name *", label_empresa:"Firma / Projekt", label_email:"E-Mail *", label_telefone:"WhatsApp / Telefon *",
+    placeholder_telefone:"+49 1XX XXXXXXX", label_tipo:"Kundentyp",
+    opt_tipo1:"Architekt / Designer", opt_tipo2:"Bauunternehmer", opt_tipo3:"Natursteinverarbeiter",
+    opt_tipo4:"Immobilienentwickler", opt_tipo5:"Gemeinde / Öffentliche Bauten", opt_tipo6:"Sonstiges",
+    label_ref:"Produktreferenz (falls bekannt)", placeholder_ref:"z.B. GR-CIN-01",
+    label_acabamento:"Oberfläche", opt_acab1:"Poliert", opt_acab2:"Geschliffen", opt_acab3:"Stockgehämmert",
+    opt_acab4:"Geflammt", opt_acab5:"Sandgestrahlt", opt_acab6:"Noch unklar",
+    label_espessura:"Stärke", opt_esp1:"2 cm", opt_esp2:"3 cm", opt_esp3:"4–20 cm (nach Maß)", opt_esp4:"Noch unklar",
+    label_qtd:"Geschätzte Menge / m²", placeholder_qtd:"z.B. 45 m²",
+    label_detalhes:"Projektdetails", placeholder_detalhes:"Beschreiben Sie das Projekt, gewünschten Zeitrahmen, Lieferadresse usw.",
+    label_anexo:"Datei anhängen (PDF, Excel oder Bilder)",
+    note_anexo:"Sie können einen Grundriss, ein Datenblatt oder Fotos anhängen (PDF, Excel oder Bild). Empfohlenes Limit: bis zu 10&nbsp;MB insgesamt.",
+    btn_email:"Per E-Mail Senden", btn_whatsapp:"Per WhatsApp Senden", btn_pdf:"Als PDF Herunterladen",
+    note_whatsapp:"WhatsApp: nur Textnachrichten. Um das PDF per WhatsApp oder E-Mail als Anhang zu senden, laden Sie es zuerst herunter und fügen Sie es manuell dem Gespräch hinzu.",
+    footer_sub:"Beratung für Natursteine",
+    msg_validar:"Bitte füllen Sie Name, E-Mail und WhatsApp/Telefon aus.",
+    msg_email_configure:"Bitte konfigurieren Sie zuerst Formspree (siehe gesendete Anleitung), bevor Sie diese Schaltfläche verwenden.",
+    msg_email_ok:"Anfrage (mit Anhängen, falls gesendet) erfolgreich per E-Mail gesendet!",
+    msg_email_fail:"Senden fehlgeschlagen. Prüfen Sie die Anhanggröße (max. ~10MB) oder nutzen Sie WhatsApp.",
+    msg_email_error:"Verbindungsfehler. Bitte erneut versuchen oder WhatsApp nutzen.",
+    msg_pdf_ok:"PDF heruntergeladen. Sie können es jetzt per E-Mail oder WhatsApp anhängen."
+  },
+  ru: {
+    nav_portfolio:"Портфолио", nav_aplicacoes:"Применение", nav_encomenda:"Запросить Смету", nav_cta:"Оформить Заказ",
+    hero_title:"Портфолио работ и запросы на смету",
+    hero_lead:"Ознакомьтесь с примерами доступного материала и отправьте запрос напрямую по email, WhatsApp или в виде PDF для прикрепления там, где нужно.",
+    portfolio_title:"Портфолио", portfolio_sub:"Образцы доступного материала и отделки.",
+    foto_em_breve:"Фото скоро появится", foto_em_breve_obra:"Фото скоро появится",
+    cap_amostras:"Образцы — Цветовая Гамма", cap_armazem:"Склад — Плиты на Выставке",
+    cap_chapas_marmore:"Мраморные Плиты", cap_selecao_chapas:"Подборка Плит",
+    cap_textura:"Текстура — Гранитный Блок", cap_obra_futura:"Ваш следующий проект здесь",
+    aplicacoes_title:"Применение", aplicacoes_sub:"Реальные примеры на кухнях, в ванных, лестницах и фасадах. Нажмите на изображение для увеличения.",
+    cap_cozinha_branco:"Кухня — Мраморная Столешница", cap_cozinha_ilha:"Кухня — Центральный Остров",
+    cap_hall_escada:"Прихожая — Лестница", cap_cozinha_exotica:"Кухня — Экзотический Камень",
+    cap_fachada:"Фасад — Внешняя Облицовка", cap_banheiro:"Ванная — Столешница",
+    encomenda_title:"Запросить Смету", encomenda_sub:"Заполните данные проекта и выберите способ отправки: email, WhatsApp (только текст) или скачайте в PDF для прикрепления там, где нужно.",
+    label_nome:"Имя *", label_empresa:"Компания / Объект", label_email:"Email *", label_telefone:"WhatsApp / Телефон *",
+    placeholder_telefone:"+7 9XX XXX XX XX", label_tipo:"Тип клиента",
+    opt_tipo1:"Архитектор / Дизайнер", opt_tipo2:"Строитель / Подрядчик", opt_tipo3:"Обработчик Камня",
+    opt_tipo4:"Застройщик", opt_tipo5:"Муниципалитет / Госзаказ", opt_tipo6:"Другое",
+    label_ref:"Артикул продукта (если известен)", placeholder_ref:"Напр.: GR-CIN-01",
+    label_acabamento:"Отделка", opt_acab1:"Полированная", opt_acab2:"Матовая", opt_acab3:"Бучардированная",
+    opt_acab4:"Термообработанная", opt_acab5:"Пескоструйная", opt_acab6:"Пока не знаю",
+    label_espessura:"Толщина", opt_esp1:"2 см", opt_esp2:"3 см", opt_esp3:"4–20 см (под заказ)", opt_esp4:"Пока не знаю",
+    label_qtd:"Ориентировочное количество / м²", placeholder_qtd:"Напр.: 45 м²",
+    label_detalhes:"Детали проекта", placeholder_detalhes:"Опишите проект, желаемые сроки, адрес доставки и т.д.",
+    label_anexo:"Прикрепить файл (PDF, Excel или изображения)",
+    note_anexo:"Вы можете прикрепить план, техническую карту или фото (PDF, Excel или изображение). Рекомендуемый лимит: до 10&nbsp;МБ в сумме.",
+    btn_email:"Отправить по Email", btn_whatsapp:"Отправить по WhatsApp", btn_pdf:"Скачать в PDF",
+    note_whatsapp:"WhatsApp: только текстовые сообщения. Если хотите отправить PDF по WhatsApp или email как вложение, сначала скачайте его и прикрепите вручную в переписке.",
+    footer_sub:"Консультации по Природному Камню",
+    msg_validar:"Пожалуйста, заполните Имя, Email и WhatsApp/Телефон.",
+    msg_email_configure:"Сначала настройте Formspree (см. отправленные инструкции), прежде чем использовать эту кнопку.",
+    msg_email_ok:"Запрос (с вложениями, если отправлены) успешно отправлен по email!",
+    msg_email_fail:"Не удалось отправить. Проверьте размер вложений (макс. ~10 МБ) или используйте WhatsApp.",
+    msg_email_error:"Ошибка соединения. Попробуйте снова или используйте WhatsApp.",
+    msg_pdf_ok:"PDF скачан. Теперь вы можете прикрепить его к email или WhatsApp."
+  },
+  nl: {
+    nav_portfolio:"Portfolio", nav_aplicacoes:"Toepassingen", nav_encomenda:"Offerte Aanvragen", nav_cta:"Bestelling Plaatsen",
+    hero_title:"Portfolio van werk en offerteaanvragen",
+    hero_lead:"Bekijk voorbeelden van beschikbaar materiaal en stuur uw aanvraag rechtstreeks per e-mail, WhatsApp of als PDF om overal bij te voegen waar nodig.",
+    portfolio_title:"Portfolio", portfolio_sub:"Stalen van beschikbaar materiaal en afwerkingen.",
+    foto_em_breve:"Foto volgt binnenkort", foto_em_breve_obra:"Foto volgt binnenkort",
+    cap_amostras:"Stalen — Kleurenpalet", cap_armazem:"Magazijn — Platen in Uitstalling",
+    cap_chapas_marmore:"Marmeren Platen", cap_selecao_chapas:"Platenselectie",
+    cap_textura:"Textuur — Granietblok", cap_obra_futura:"Uw volgende project hier",
+    aplicacoes_title:"Toepassingen", aplicacoes_sub:"Praktijkvoorbeelden in keukens, badkamers, trappen en gevels. Klik op een afbeelding om te vergroten.",
+    cap_cozinha_branco:"Keuken — Marmeren Werkblad", cap_cozinha_ilha:"Keuken — Kookeiland",
+    cap_hall_escada:"Entreehal — Trap", cap_cozinha_exotica:"Keuken — Exotische Steen",
+    cap_fachada:"Gevel — Buitenbekleding", cap_banheiro:"Badkamer — Werkblad",
+    encomenda_title:"Offerte Aanvragen", encomenda_sub:"Vul de projectgegevens in en kies hoe u wilt verzenden: e-mail, WhatsApp (alleen tekst) of download als PDF om overal bij te voegen waar nodig.",
+    label_nome:"Naam *", label_empresa:"Bedrijf / Project", label_email:"E-mail *", label_telefone:"WhatsApp / Telefoon *",
+    placeholder_telefone:"+31 6 XXXXXXXX", label_tipo:"Klanttype",
+    opt_tipo1:"Architect / Ontwerper", opt_tipo2:"Bouwer / Aannemer", opt_tipo3:"Natuursteenbewerker",
+    opt_tipo4:"Vastgoedontwikkelaar", opt_tipo5:"Gemeente / Openbare Werken", opt_tipo6:"Anders",
+    label_ref:"Productreferentie (indien bekend)", placeholder_ref:"Bijv.: GR-CIN-01",
+    label_acabamento:"Afwerking", opt_acab1:"Gepolijst", opt_acab2:"Gehoond", opt_acab3:"Gestockt",
+    opt_acab4:"Geflambeerd", opt_acab5:"Gezandstraald", opt_acab6:"Nog niet bekend",
+    label_espessura:"Dikte", opt_esp1:"2 cm", opt_esp2:"3 cm", opt_esp3:"4–20 cm (op maat)", opt_esp4:"Nog niet bekend",
+    label_qtd:"Geschatte hoeveelheid / m²", placeholder_qtd:"Bijv.: 45 m²",
+    label_detalhes:"Projectdetails", placeholder_detalhes:"Beschrijf het project, gewenste termijn, afleveradres, enz.",
+    label_anexo:"Bestand bijvoegen (PDF, Excel of afbeeldingen)",
+    note_anexo:"U kunt een plattegrond, technisch blad of foto's bijvoegen (PDF, Excel of afbeelding). Aanbevolen limiet: tot 10&nbsp;MB in totaal.",
+    btn_email:"Verstuur per E-mail", btn_whatsapp:"Verstuur per WhatsApp", btn_pdf:"Download als PDF",
+    note_whatsapp:"WhatsApp: alleen tekstberichten. Wilt u de PDF per WhatsApp of e-mail als bijlage sturen, download deze dan eerst en voeg hem handmatig toe aan het gesprek.",
+    footer_sub:"Advies over Natuursteen",
+    msg_validar:"Vul alstublieft Naam, E-mail en WhatsApp/Telefoon in.",
+    msg_email_configure:"Configureer eerst Formspree (zie verzonden instructies) voordat u deze knop gebruikt.",
+    msg_email_ok:"Aanvraag (met bijlagen, indien verzonden) succesvol per e-mail verzonden!",
+    msg_email_fail:"Verzenden mislukt. Controleer de bijlagegrootte (max. ~10MB) of gebruik WhatsApp.",
+    msg_email_error:"Verbindingsfout. Probeer het opnieuw of gebruik WhatsApp.",
+    msg_pdf_ok:"PDF gedownload. U kunt het nu bijvoegen aan uw e-mail of WhatsApp."
+  },
+  da: {
+    nav_portfolio:"Portefølje", nav_aplicacoes:"Anvendelser", nav_encomenda:"Anmod om Tilbud", nav_cta:"Afgiv Bestilling",
+    hero_title:"Portefølje af arbejde og tilbudsanmodninger",
+    hero_lead:"Se eksempler på tilgængeligt materiale, og send din anmodning direkte via e-mail, WhatsApp eller som PDF til at vedhæfte, hvor du har brug for det.",
+    portfolio_title:"Portefølje", portfolio_sub:"Prøver af tilgængeligt materiale og finish.",
+    foto_em_breve:"Foto kommer snart", foto_em_breve_obra:"Foto kommer snart",
+    cap_amostras:"Prøver — Farvesortiment", cap_armazem:"Lager — Plader på Udstilling",
+    cap_chapas_marmore:"Marmorplader", cap_selecao_chapas:"Pladeudvalg",
+    cap_textura:"Struktur — Granitblok", cap_obra_futura:"Dit næste projekt her",
+    aplicacoes_title:"Anvendelser", aplicacoes_sub:"Virkelige eksempler i køkkener, badeværelser, trapper og facader. Klik på et billede for at forstørre.",
+    cap_cozinha_branco:"Køkken — Marmorbordplade", cap_cozinha_ilha:"Køkken — Køkkenø",
+    cap_hall_escada:"Entré — Trappe", cap_cozinha_exotica:"Køkken — Eksotisk Sten",
+    cap_fachada:"Facade — Udvendig Beklædning", cap_banheiro:"Badeværelse — Bordplade",
+    encomenda_title:"Anmod om Tilbud", encomenda_sub:"Udfyld projektoplysningerne, og vælg hvordan du vil sende det: e-mail, WhatsApp (kun tekst) eller download som PDF til at vedhæfte, hvor du har brug for det.",
+    label_nome:"Navn *", label_empresa:"Virksomhed / Projekt", label_email:"E-mail *", label_telefone:"WhatsApp / Telefon *",
+    placeholder_telefone:"+45 XX XX XX XX", label_tipo:"Kundetype",
+    opt_tipo1:"Arkitekt / Designer", opt_tipo2:"Bygherre / Entreprenør", opt_tipo3:"Stenforarbejder",
+    opt_tipo4:"Ejendomsudvikler", opt_tipo5:"Kommune / Offentligt Arbejde", opt_tipo6:"Andet",
+    label_ref:"Produktreference (hvis kendt)", placeholder_ref:"F.eks.: GR-CIN-01",
+    label_acabamento:"Finish", opt_acab1:"Poleret", opt_acab2:"Slebet", opt_acab3:"Buchardet",
+    opt_acab4:"Flammebehandlet", opt_acab5:"Sandblæst", opt_acab6:"Ved endnu ikke",
+    label_espessura:"Tykkelse", opt_esp1:"2 cm", opt_esp2:"3 cm", opt_esp3:"4–20 cm (skræddersyet)", opt_esp4:"Ved endnu ikke",
+    label_qtd:"Anslået mængde / m²", placeholder_qtd:"F.eks.: 45 m²",
+    label_detalhes:"Projektdetaljer", placeholder_detalhes:"Beskriv projektet, ønsket tidsramme, leveringsadresse osv.",
+    label_anexo:"Vedhæft fil (PDF, Excel eller billeder)",
+    note_anexo:"Du kan vedhæfte en plantegning, datablad eller fotos (PDF, Excel eller billede). Anbefalet grænse: op til 10&nbsp;MB i alt.",
+    btn_email:"Send via E-mail", btn_whatsapp:"Send via WhatsApp", btn_pdf:"Download som PDF",
+    note_whatsapp:"WhatsApp: kun tekstbeskeder. Hvis du foretrækker at sende PDF'en via WhatsApp eller e-mail som vedhæftning, skal du downloade den først og vedhæfte den manuelt i samtalen.",
+    footer_sub:"Rådgivning om Naturlig Sten",
+    msg_validar:"Udfyld venligst Navn, E-mail og WhatsApp/Telefon.",
+    msg_email_configure:"Konfigurer først Formspree (se de fremsendte instruktioner), før du bruger denne knap.",
+    msg_email_ok:"Anmodning (med vedhæftninger, hvis sendt) sendt via e-mail!",
+    msg_email_fail:"Kunne ikke sende. Tjek vedhæftningens størrelse (maks. ~10MB), eller brug WhatsApp.",
+    msg_email_error:"Forbindelsesfejl. Prøv igen, eller brug WhatsApp.",
+    msg_pdf_ok:"PDF downloadet. Du kan nu vedhæfte den til din e-mail eller WhatsApp."
+  }
+};
+
+// País (ISO2) → idioma. Qualquer país fora desta lista usa inglês (fallback).
+const countryToLang = {
+  PT:"pt", BR:"pt", AO:"pt", MZ:"pt", CV:"pt", GW:"pt", ST:"pt", TL:"pt",
+  ES:"es", MX:"es", AR:"es", CO:"es", CL:"es", PE:"es", VE:"es", EC:"es", GT:"es", CU:"es", BO:"es", DO:"es", HN:"es", PY:"es", SV:"es", NI:"es", CR:"es", PA:"es", UY:"es", GQ:"es",
+  CN:"zh", TW:"zh", HK:"zh", MO:"zh",
+  DE:"de", AT:"de", CH:"de", LI:"de",
+  RU:"ru", BY:"ru", KZ:"ru", KG:"ru", TJ:"ru",
+  NL:"nl", BE:"nl",
+  DK:"dk_ignore", // placeholder para não conflitar; corrigido abaixo
+};
+countryToLang.DK = "da";
+
+let currentLang = "pt";
+
+function t(key){
+  const dict = translations[currentLang] || translations.en;
+  return (dict && dict[key] !== undefined) ? dict[key] : (translations.en[key] || key);
+}
+
+function applyLang(lang){
+  currentLang = translations[lang] ? lang : "en";
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    el.innerHTML = t(key);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-placeholder');
+    el.placeholder = t(key);
+  });
+  const sw = document.getElementById('langSwitcher');
+  if(sw) sw.value = currentLang;
+}
+
+function initLanguage(){
+  const saved = localStorage.getItem('pd_lang');
+  if(saved && translations[saved]){
+    applyLang(saved);
+    return;
+  }
+  // Deteção automática pelo IP; se falhar por qualquer razão, mantém inglês.
+  applyLang('en');
+  fetch('https://ipapi.co/json/', {cache:'no-store'})
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      const code = (data && data.country_code) ? data.country_code.toUpperCase() : null;
+      const lang = (code && countryToLang[code]) ? countryToLang[code] : 'en';
+      applyLang(lang);
+    })
+    .catch(() => { applyLang('en'); });
+}
+
+document.getElementById('langSwitcher').addEventListener('change', function(){
+  localStorage.setItem('pd_lang', this.value);
+  applyLang(this.value);
+});
+
+initLanguage();
+
 function getFormData(){
   return {
     nome: document.getElementById('f_nome').value,
@@ -347,7 +714,7 @@ function getFormData(){
 
 function validar(d){
   if(!d.nome || !d.email || !d.telefone){
-    mostrarStatus('Por favor preencha Nome, Email e WhatsApp/Telefone.', false);
+    mostrarStatus(t('msg_validar'), false);
     return false;
   }
   return true;
@@ -382,7 +749,7 @@ async function enviarPorEmail(){
   if(!validar(d)) return;
 
   if(FORMSPREE_ENDPOINT.includes('SEU_FORM_ID')){
-    mostrarStatus('Configure primeiro o Formspree (ver instruções enviadas) antes de usar este botão.', false);
+    mostrarStatus(t('msg_email_configure'), false);
     return;
   }
 
@@ -399,12 +766,12 @@ async function enviarPorEmail(){
       body: fd
     });
     if(resp.ok){
-      mostrarStatus('Pedido (com anexos, se enviados) enviado por email com sucesso!', true);
+      mostrarStatus(t('msg_email_ok'), true);
     } else {
-      mostrarStatus('Não foi possível enviar. Verifique o tamanho dos anexos (máx. ~10MB) ou use o WhatsApp.', false);
+      mostrarStatus(t('msg_email_fail'), false);
     }
   } catch(e){
-    mostrarStatus('Erro de ligação. Tente novamente ou use o WhatsApp.', false);
+    mostrarStatus(t('msg_email_error'), false);
   }
 }
 
@@ -428,7 +795,7 @@ async function enviarPorEmailWeb3Forms(){
   if(!validar(d)) return;
 
   if(WEB3FORMS_ACCESS_KEY.includes('SUA_CHAVE')){
-    mostrarStatus('Configure primeiro o Web3Forms (ver instruções enviadas).', false);
+    mostrarStatus(t('msg_email_configure'), false);
     return;
   }
 
@@ -453,12 +820,12 @@ async function enviarPorEmailWeb3Forms(){
     });
     const data = await resp.json();
     if(data.success){
-      mostrarStatus('Pedido enviado por email com sucesso!', true);
+      mostrarStatus(t('msg_email_ok'), true);
     } else {
-      mostrarStatus('Não foi possível enviar. Verifique o tamanho do anexo (máx. ~5MB) ou use o WhatsApp.', false);
+      mostrarStatus(t('msg_email_fail'), false);
     }
   } catch(e){
-    mostrarStatus('Erro de ligação. Tente novamente ou use o WhatsApp.', false);
+    mostrarStatus(t('msg_email_error'), false);
   }
 }
 
@@ -517,7 +884,7 @@ function descarregarPDF(){
 
   const nomeArquivo = `pedido-orcamento-${d.nome.replace(/\s+/g,'-').toLowerCase() || 'cliente'}.pdf`;
   doc.save(nomeArquivo);
-  mostrarStatus('PDF descarregado. Pode agora anexá-lo no email ou WhatsApp.', true);
+  mostrarStatus(t('msg_pdf_ok'), true);
 }
 </script>
 
